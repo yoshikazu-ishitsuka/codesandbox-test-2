@@ -152,37 +152,57 @@
 // arr8[0] = 100;
 // console.log(arr4);
 
+// /**
+//  * mapやfilterを使った配列の処理
+//  * これもいつも通りES2015から
+//  * これによってfor文をあまり使わなくなった
+//  */
+// const nameArr = ["田中", "山田", "よす"];
+// for (let index = 0; index < nameArr.length; index++) {
+//   console.log(`${index + 1}番目は${nameArr[index]}です`);
+// }
+
+// // １.新しい配列を作成する
+// const nameArr2 = nameArr.map((name) => {
+//   return name;
+// });
+// console.log(nameArr2);
+
+// // 2.配列をループして処理をする (順番がほしいときはindexを使う)
+// nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`));
+
+// // ある条件に一致したものだけ返却して新しい配列を生成する
+// const numArr = [1, 2, 3, 4, 5];
+// const newNumArr = numArr.filter((num) => {
+//   return num % 2 === 0; //ここに条件式
+// });
+// console.log(newNumArr);
+
+// const newNameArr = nameArr.map((name) => {
+//   if (name === "よす") {
+//     return name;
+//   } else {
+//     return `${name}さん`;
+//   }
+// });
+// console.log(newNameArr);
+
 /**
- * mapやfilterを使った配列の処理
- * これもいつも通りES2015から
- * これによってfor文をあまり使わなくなった
+ * 三項演算子
  */
-const nameArr = ["田中", "山田", "よす"];
-for (let index = 0; index < nameArr.length; index++) {
-  console.log(`${index + 1}番目は${nameArr[index]}です`);
-}
+// ある条件 ？ 条件がtrueの時 ： 条件がfalseの時
+const val1 = 1 < 0 ? "trueです" : "falseです";
+console.log(val1);
 
-// １.新しい配列を作成する
-const nameArr2 = nameArr.map((name) => {
-  return name;
-});
-console.log(nameArr2);
+const num = 1300;
+// 金額などを3桁区切りで表示してくれる関数(数値だけ)
+console.log(num.toLocaleString());
 
-// 2.配列をループして処理をする (順番がほしいときはindexを使う)
-nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`));
+const formattedNum =
+  typeof num === "number" ? num.toLocaleString() : "数値を入力してください";
+console.log(formattedNum);
 
-// ある条件に一致したものだけ返却して新しい配列を生成する
-const numArr = [1, 2, 3, 4, 5];
-const newNumArr = numArr.filter((num) => {
-  return num % 2 === 0; //ここに条件式
-});
-console.log(newNumArr);
-
-const newNameArr = nameArr.map((name) => {
-  if (name === "よす") {
-    return name;
-  } else {
-    return `${name}さん`;
-  }
-});
-console.log(newNameArr);
+const checkSum = (num1, num2) => {
+  return num1 + num2 > 100 ? "100を超えています！" : "許容範囲内です";
+};
+console.log(checkSum(50, 40));
