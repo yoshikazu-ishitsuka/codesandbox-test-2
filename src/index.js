@@ -114,40 +114,75 @@
 // const sayHello = (name = "ゲスト") => console.log(`こんにちは！${name}さん！`);
 // sayHello("jake");
 
+// /**
+//  * スプレッド構文　...
+//  * 順番に処理する
+//  */
+// // 配列の展開
+// const arr1 = [1, 2];
+// console.log(arr1);
+// console.log(...arr1);
+
+// const sumFunc = (num1, num2) => console.log(num1 + num2);
+// sumFunc(arr1[0], arr1[1]);
+// sumFunc(...arr1);
+
+// // １つにまとめる
+// const arr2 = [1, 2, 3, 4, 5];
+// const [num1, num2, ...arr3] = arr2;
+// console.log(num1);
+// console.log(num2);
+// console.log(arr3);
+
+// // 配列のコピー、結合
+// const arr4 = [10, 20];
+// const arr5 = [30, 40];
+
+// const arr6 = [...arr4];
+// arr6[0] = 100;
+// console.log(arr6);
+// console.log(arr4);
+
+// const arr7 = [...arr4, ...arr5];
+// console.log(arr7);
+
+// // =だと値を変更したら両方とも変更される
+// const arr8 = arr4;
+// console.log(arr8);
+// arr8[0] = 100;
+// console.log(arr4);
+
 /**
- * スプレッド構文　...
- * 順番に処理する
+ * mapやfilterを使った配列の処理
+ * これもいつも通りES2015から
+ * これによってfor文をあまり使わなくなった
  */
-// 配列の展開
-const arr1 = [1, 2];
-console.log(arr1);
-console.log(...arr1);
+const nameArr = ["田中", "山田", "よす"];
+for (let index = 0; index < nameArr.length; index++) {
+  console.log(`${index + 1}番目は${nameArr[index]}です`);
+}
 
-const sumFunc = (num1, num2) => console.log(num1 + num2);
-sumFunc(arr1[0], arr1[1]);
-sumFunc(...arr1);
+// １.新しい配列を作成する
+const nameArr2 = nameArr.map((name) => {
+  return name;
+});
+console.log(nameArr2);
 
-// １つにまとめる
-const arr2 = [1, 2, 3, 4, 5];
-const [num1, num2, ...arr3] = arr2;
-console.log(num1);
-console.log(num2);
-console.log(arr3);
+// 2.配列をループして処理をする (順番がほしいときはindexを使う)
+nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`));
 
-// 配列のコピー、結合
-const arr4 = [10, 20];
-const arr5 = [30, 40];
+// ある条件に一致したものだけ返却して新しい配列を生成する
+const numArr = [1, 2, 3, 4, 5];
+const newNumArr = numArr.filter((num) => {
+  return num % 2 === 0; //ここに条件式
+});
+console.log(newNumArr);
 
-const arr6 = [...arr4];
-arr6[0] = 100;
-console.log(arr6);
-console.log(arr4);
-
-const arr7 = [...arr4, ...arr5];
-console.log(arr7);
-
-// =だと値を変更したら両方とも変更される
-const arr8 = arr4;
-console.log(arr8);
-arr8[0] = 100;
-console.log(arr4);
+const newNameArr = nameArr.map((name) => {
+  if (name === "よす") {
+    return name;
+  } else {
+    return `${name}さん`;
+  }
+});
+console.log(newNameArr);
